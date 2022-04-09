@@ -15,13 +15,16 @@ class _Body extends StatelessWidget {
   const _Body({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => GridView.count(
-        crossAxisCount: 3,
-        children: const [
-          _ContentCard(
-            routePath: Routes.counter,
-          )
-        ],
+  Widget build(BuildContext context) => SafeArea(
+        child: GridView.count(
+          crossAxisCount: 3,
+          padding: const EdgeInsets.all(16),
+          children: const [
+            _ContentCard(
+              routePath: Routes.counter,
+            )
+          ],
+        ),
       );
 }
 
@@ -34,9 +37,12 @@ class _ContentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => context.push(routePath),
-      child: const Card(),
+    return Card(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () => context.push(routePath),
+        child: const SizedBox(),
+      ),
     );
   }
 }
