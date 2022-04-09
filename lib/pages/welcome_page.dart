@@ -6,8 +6,9 @@ class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const Scaffold(
-        body: _Body(),
+  Widget build(BuildContext context) => Scaffold(
+        body: const _Body(),
+        appBar: AppBar(title: const Text('Welcome!')),
       );
 }
 
@@ -15,16 +16,14 @@ class _Body extends StatelessWidget {
   const _Body({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: GridView.count(
-          crossAxisCount: 3,
-          padding: const EdgeInsets.all(16),
-          children: const [
-            _ContentCard(
-              routePath: Routes.counter,
-            )
-          ],
-        ),
+  Widget build(BuildContext context) => GridView.count(
+        crossAxisCount: 3,
+        padding: const EdgeInsets.all(16),
+        children: const [
+          _ContentCard(
+            routePath: Routes.counter,
+          )
+        ],
       );
 }
 
