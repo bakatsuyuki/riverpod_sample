@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_sample/const/routes.dart';
@@ -18,10 +19,15 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GridView.count(
         crossAxisCount: 3,
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8),
         children: const [
           _ContentCard(
             routePath: Routes.counter,
+            title: 'Counter',
+            description: 'The counter is awesome. '
+                'It\'s the beautiful counter. '
+                'So you should open this page.'
+                'You must open this page.',
           )
         ],
       );
@@ -31,8 +37,12 @@ class _ContentCard extends StatelessWidget {
   const _ContentCard({
     Key? key,
     required this.routePath,
+    required this.title,
+    required this.description,
   }) : super(key: key);
   final String routePath;
+  final String title;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +50,26 @@ class _ContentCard extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
         onTap: () => context.push(routePath),
-        child: const SizedBox(),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+              const SizedBox(height: 2),
+              Expanded(
+                child: Text(
+                  description,
+                  style: Theme.of(context).textTheme.caption,
+                  overflow: TextOverflow.fade,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
