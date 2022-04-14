@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_sample/const/routes.dart';
 
@@ -19,14 +20,11 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) => GridView.count(
         crossAxisCount: 3,
         padding: const EdgeInsets.all(8),
-        children: const [
+        children: [
           _ContentCard(
             routePath: Routes.counter,
-            title: 'Counter',
-            description: 'The counter is awesome. '
-                'It\'s the beautiful counter. '
-                'So you should open this page.'
-                'You must open this page.',
+            title: AppLocalizations.of(context)!.counter,
+            description: AppLocalizations.of(context)!.counterDescription,
           )
         ],
       );
