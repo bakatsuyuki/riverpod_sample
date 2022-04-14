@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_sample/const/routes.dart';
+import 'package:riverpod_sample/extensions/localizations_helper.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class WelcomePage extends StatelessWidget {
         body: const _Body(),
         appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context)!.welcome,
+            context.localizations.welcome,
           ),
         ),
       );
@@ -27,8 +27,8 @@ class _Body extends StatelessWidget {
         children: [
           _ContentCard(
             routePath: Routes.counter,
-            title: AppLocalizations.of(context)!.counter,
-            description: AppLocalizations.of(context)!.counterDescription,
+            title: context.localizations.counter,
+            description: context.localizations.counterDescription,
           )
         ],
       );

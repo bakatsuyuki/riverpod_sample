@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_sample/extensions/localizations_helper.dart';
 import 'package:riverpod_sample/models/counter_model.dart';
 
 class CounterPage extends ConsumerWidget {
@@ -10,7 +10,7 @@ class CounterPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.counter),
+        title: Text(context.localizations.counter),
       ),
       body: Center(
         child: Column(
