@@ -9,7 +9,11 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: const _Body(),
-        appBar: AppBar(title: const Text('Welcome!')),
+        appBar: AppBar(
+          title: Text(
+            AppLocalizations.of(context)!.welcome,
+          ),
+        ),
       );
 }
 

@@ -12,9 +12,7 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.counter,
-      builder: (_, state) => const CounterPage(
-        title: 'Flutter Demo Home Page',
-      ),
+      builder: (_, state) => const CounterPage(),
     ),
   ],
 );
