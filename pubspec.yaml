@@ -20,6 +20,8 @@ dev_dependencies:
   pedantic_mono: any
   flutter_test:
     sdk: flutter
+  freezed:
+  build_runner:
 
 flutter:
   uses-material-design: true
