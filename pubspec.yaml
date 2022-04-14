@@ -15,6 +15,7 @@ dependencies:
   freezed_annotation:
   cupertino_icons: ^1.0.2
   go_router:
+  intl:
 
 dev_dependencies:
   pedantic_mono: any
