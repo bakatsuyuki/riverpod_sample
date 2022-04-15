@@ -8,6 +8,7 @@ class PageCard extends StatelessWidget {
     required this.title,
     required this.description,
   }) : super(key: key);
+
   final String routePath;
   final String title;
   final String description;
@@ -16,7 +17,14 @@ class PageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return _InkWellCard(
       onTap: () => context.push(routePath),
-      child: _TitleAndDescription(title, description),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _Title(title),
+          const SizedBox(height: 2),
+          Expanded(child: _Description(description)),
+        ],
+      ),
     );
   }
 }
@@ -41,32 +49,25 @@ class _InkWellCard extends StatelessWidget {
       );
 }
 
-class _TitleAndDescription extends StatelessWidget {
-  const _TitleAndDescription(
-    this.title,
-    this.description, {
-    Key? key,
-  }) : super(key: key);
+class _Title extends StatelessWidget {
+  const _Title(this.text, {Key? key}) : super(key: key);
 
-  final String title;
-  final String description;
-
+  final String text;
   @override
-  Widget build(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
-          const SizedBox(height: 2),
-          Expanded(
-            child: Text(
-              description,
-              style: Theme.of(context).textTheme.caption,
-              overflow: TextOverflow.fade,
-            ),
-          ),
-        ],
+  Widget build(BuildContext context) => Text(
+        text,
+        style: Theme.of(context).textTheme.subtitle1,
+      );
+}
+
+class _Description extends StatelessWidget {
+  const _Description(this.text, {Key? key}) : super(key: key);
+
+  final String text;
+  @override
+  Widget build(BuildContext context) => Text(
+        text,
+        style: Theme.of(context).textTheme.caption,
+        overflow: TextOverflow.fade,
       );
 }
