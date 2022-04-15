@@ -18,9 +18,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   go_router:
   intl:
+  dart_code_metrics:
 
 dev_dependencies:
-  pedantic_mono: any
+  pedantic_mono:
   flutter_test:
     sdk: flutter
   freezed:
