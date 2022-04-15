@@ -6,5 +6,11 @@
   "form": "フォーム",
   "formDescription": "このフォームはマジでやばい。本当に最高ですよマジで。いいですよほんと。",
   "id": "ID",
-  "password": "パスワード"
+  "password": "パスワード",
+  "name": "名前",
+  "postalCode": "郵便番号",
+  "address": "住所",
+  "hobby": "趣味",
+  "oneLastWord": "最後に一言どうぞ!",
+  "submit": "登録"
 }

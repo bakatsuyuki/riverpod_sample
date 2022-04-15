@@ -6,5 +6,11 @@
   "form": "Form",
   "formDescription": "This form is amazing seriously. Seriously it's grateful. It's good.",
   "id": "ID",
-  "password": "Password"
+  "password": "Password",
+  "name": "Name",
+  "postalCode": "Postal Code",
+  "address": "Address",
+  "hobby": "Hobby",
+  "oneLastWord": "Please one last word!",
+  "submit": "Submit"
 }
