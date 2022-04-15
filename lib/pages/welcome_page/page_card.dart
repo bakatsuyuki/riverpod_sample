@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ContentCard extends StatelessWidget {
-  const ContentCard({
+class PageCard extends StatelessWidget {
+  const PageCard({
     Key? key,
     required this.routePath,
     required this.title,
