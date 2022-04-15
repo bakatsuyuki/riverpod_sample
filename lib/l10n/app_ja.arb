@@ -1,5 +1,6 @@
 {
-    "welcome": "ようこそ!",
-    "counter": "カウンター",
-    "counterDescription": "このカウンターはめっちゃすごいので、開かないとあなたは後悔することになるでしょう。"
+  "welcome": "ようこそ!",
+  "counter": "カウンター",
+  "counterDescription": "このカウンターはめっちゃすごいので、開かないとあなたは後悔することになるでしょう。",
+  "pushedTimesAre": "ボタンを押した回数:"
 }

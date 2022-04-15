@@ -1,5 +1,6 @@
 {
-    "welcome": "Welcome!",
-    "counter": "Counter",
-    "counterDescription": "The counter is awesome. It's the beautiful counter.  So you should open this page. You must open this page."
+  "welcome": "Welcome!",
+  "counter": "Counter",
+  "counterDescription": "The counter is awesome. It's the beautiful counter.  So you should open this page. You must open this page.",
+  "pushedTimesAre": "You have pushed the button this many times:"
 }

@@ -16,8 +16,8 @@ class CounterPage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Text(
+              context.localizations.pushedTimesAre,
             ),
             Text(
               '${ref.watch(counter)}',
