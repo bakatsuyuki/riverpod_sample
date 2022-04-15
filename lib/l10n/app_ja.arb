@@ -2,5 +2,9 @@
   "welcome": "ようこそ!",
   "counter": "カウンター",
   "counterDescription": "このカウンターはめっちゃすごいので、開かないとあなたは後悔することになるでしょう。",
-  "pushedTimesAre": "ボタンを押した回数:"
+  "pushedTimesAre": "ボタンを押した回数:",
+  "form": "フォーム",
+  "formDescription": "このフォームはマジでやばい。本当に最高ですよマジで。いいですよほんと。",
+  "id": "ID",
+  "password": "パスワード"
 }

@@ -30,6 +30,12 @@ class _Body extends StatelessWidget {
             routePath: Routes.counter,
             title: context.localizations.counter,
             description: context.localizations.counterDescription,
+          ),
+
+          ContentCard(
+            routePath: Routes.form,
+            title: context.localizations.form,
+            description: context.localizations.formDescription,
           )
         ],
       );
