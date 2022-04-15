@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_sample/extensions/localizations_helper.dart';
-import 'package:riverpod_sample/models/counter_model.dart';
+
+import 'counter.dart';
 
 class CounterPage extends ConsumerWidget {
   const CounterPage({Key? key}) : super(key: key);
