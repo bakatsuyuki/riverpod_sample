@@ -19,6 +19,7 @@ dependencies:
   go_router:
   intl:
   dart_code_metrics:
+  json_serializable:
 
 dev_dependencies:
   pedantic_mono:
