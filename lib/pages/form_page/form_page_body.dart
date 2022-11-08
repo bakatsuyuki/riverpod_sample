@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_sample/extensions/localizations_helper.dart';
 
 class FormPageBody extends StatelessWidget {
@@ -9,14 +10,21 @@ class FormPageBody extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: ListView(
-            children: const [
-              _IdTextField(),
-              _PasswordTextField(),
-              _NameTextField(),
-              _PostalCodeTextField(),
-              _AddressTextField(),
-              _HobbyTextField(),
-              _OneLastWordTextField(),
+            children: [
+              const _IdTextField(),
+              const _PasswordTextField(),
+              const _NameTextField(),
+              const _PostalCodeTextField(),
+              const _AddressTextField(),
+              const _HobbyTextField(),
+              const _OneLastWordTextField(),
+              const _SampleValue(),
+              ProviderScope(
+                overrides: [
+                  _sampleValueProvider.overrideWithValue('sample value 2'),
+                ],
+                child: const _SampleValue(),
+              )
             ],
           ),
         ),
@@ -118,3 +126,16 @@ class _OneLastWordTextField extends StatelessWidget {
         },
       );
 }
+
+class _SampleValue extends ConsumerWidget {
+  const _SampleValue({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    print(hashCode);
+    final sampleValue = ref.watch(_sampleValueProvider);
+    return Text(sampleValue);
+  }
+}
+
+final _sampleValueProvider = Provider((ref) => 'sample value');
