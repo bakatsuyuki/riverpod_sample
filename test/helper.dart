@@ -17,7 +17,6 @@ class TestApp extends StatelessWidget {
       ],
       supportedLocales: const [
         Locale('en', ''),
-        Locale('ja', ''),
       ],
       home: home,
     );
