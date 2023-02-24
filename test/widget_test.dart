@@ -6,20 +6,21 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:riverpod_sample/app.dart';
+import 'package:riverpod_sample/pages/counter_page/counter_page.dart';
+
+import 'helper.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const MyApp(),
+      const ProviderScope(
+        child: TestApp(
+          home: CounterPage(),
+        ),
+      ),
     );
-
-    expect(find.text('Counter'), findsOneWidget);
-
-    await tester.tap(find.text('Counter'));
-    await tester.pumpAndSettle();
-
     expect(find.text('0'), findsOneWidget);
     expect(find.text('1'), findsNothing);
 
