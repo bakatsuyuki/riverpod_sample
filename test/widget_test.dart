@@ -13,13 +13,9 @@ import 'package:riverpod_sample/pages/counter_page/counter_page.dart';
 import 'helper.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('CounterPage', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const ProviderScope(
-        child: TestApp(
-          home: CounterPage(),
-        ),
-      ),
+      const ProviderScope(child: TestApp(home: CounterPage())),
     );
     expect(find.text('0'), findsOneWidget);
     expect(find.text('1'), findsNothing);
