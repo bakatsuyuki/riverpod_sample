@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_sample/extensions/localizations_helper.dart';
 
@@ -27,136 +28,64 @@ class _Body extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
-          children: const [
-            _IdTextField(),
-            _PasswordTextField(),
-            _NameTextField(),
-            _PostalCodeTextField(),
-            _AddressTextField(),
-            _HobbyTextField(),
-            _OneLastWordTextField(),
-          ],
+          children:
+              _FormValueType.values.map((e) => _TextField(type: e)).toList(),
         ),
       ),
     );
   }
 }
 
-class _IdTextField extends ConsumerWidget {
-  const _IdTextField({Key? key}) : super(key: key);
+class _TextField extends ConsumerWidget {
+  const _TextField({Key? key, required this.type}) : super(key: key);
+
+  final _FormValueType type;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => TextFormField(
-        controller: ref.watch(idTextEditingController),
-        decoration: InputDecoration(labelText: context.localizations.id),
-        textInputAction: TextInputAction.next,
-        onFieldSubmitted: (value) {
-          //print(value);
-        },
-      );
-}
-
-class _PasswordTextField extends ConsumerWidget {
-  const _PasswordTextField({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) => TextFormField(
-        controller: ref.watch(passwordTextEditingController),
-        decoration: InputDecoration(labelText: context.localizations.password),
-        textInputAction: TextInputAction.next,
-        onFieldSubmitted: (value) {
-          //print(value);
-        },
-      );
-}
-
-class _NameTextField extends ConsumerWidget {
-  const _NameTextField({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) => TextFormField(
-        controller: ref.watch(nameTextEditingController),
-        decoration: InputDecoration(labelText: context.localizations.name),
-        textInputAction: TextInputAction.next,
-        onFieldSubmitted: (value) {
-          //print(value);
-        },
-      );
-}
-
-class _PostalCodeTextField extends ConsumerWidget {
-  const _PostalCodeTextField({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) => TextFormField(
-        controller: ref.watch(postalCodeTextEditingController),
-        decoration:
-            InputDecoration(labelText: context.localizations.postalCode),
-        textInputAction: TextInputAction.next,
-        onFieldSubmitted: (value) {
-          //print(value);
-        },
-      );
-}
-
-class _AddressTextField extends ConsumerWidget {
-  const _AddressTextField({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) => TextFormField(
-        controller: ref.watch(addressTextEditingController),
+        controller: ref.watch(textEditingControllerProviders(type)),
         decoration: InputDecoration(
-          labelText: context.localizations.address,
+          labelText: context.localizations.getText(type),
         ),
-        textInputAction: TextInputAction.next,
-        onFieldSubmitted: (value) {
-          //print(value);
-        },
+        textInputAction: _FormValueType.values.last == type
+            ? TextInputAction.done
+            : TextInputAction.next,
       );
 }
 
-class _HobbyTextField extends ConsumerWidget {
-  const _HobbyTextField({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) => TextFormField(
-        controller: ref.watch(hobbyTextEditingController),
-        decoration: InputDecoration(labelText: context.localizations.hobby),
-        textInputAction: TextInputAction.next,
-        onFieldSubmitted: (value) {
-          //print(value);
-        },
-      );
-}
-
-class _OneLastWordTextField extends ConsumerWidget {
-  const _OneLastWordTextField({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) => TextFormField(
-        controller: ref.watch(oneLastWordTextEditingController),
-        decoration: InputDecoration(
-          labelText: context.localizations.oneLastWord,
-        ),
-        textInputAction: TextInputAction.done,
-        onFieldSubmitted: (value) {
-          //print(value);
-        },
-      );
-}
-
-final idTextEditingController = ChangeNotifierProvider(
-  (_) => TextEditingController(),
-);
-final passwordTextEditingController = Provider((_) => TextEditingController());
-final nameTextEditingController = Provider((_) => TextEditingController());
-final postalCodeTextEditingController = Provider(
-  (_) => TextEditingController(),
-);
-final addressTextEditingController = Provider((_) => TextEditingController());
-final hobbyTextEditingController = Provider((_) => TextEditingController());
-final oneLastWordTextEditingController = Provider(
-  (_) => TextEditingController(),
+final textEditingControllerProviders = ChangeNotifierProvider.family(
+  (ref, _FormValueType _) => TextEditingController(),
 );
 
 final isEnabledProvider = Provider((_) => false);
+
+enum _FormValueType {
+  id,
+  password,
+  name,
+  postalCode,
+  address,
+  hobby,
+  oneLastWord;
+}
+
+extension _AppLocalizationsExtension on AppLocalizations {
+  String getText(_FormValueType type) {
+    switch (type) {
+      case _FormValueType.id:
+        return id;
+      case _FormValueType.password:
+        return password;
+      case _FormValueType.name:
+        return name;
+      case _FormValueType.postalCode:
+        return postalCode;
+      case _FormValueType.address:
+        return address;
+      case _FormValueType.hobby:
+        return hobby;
+      case _FormValueType.oneLastWord:
+        return oneLastWord;
+    }
+  }
+}
