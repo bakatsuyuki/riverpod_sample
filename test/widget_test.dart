@@ -27,5 +27,11 @@ void main() {
     await tester.pump();
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+    for (var i = 0; i < 5; i++) {
+      await tester.tap(find.byIcon(Icons.add));
+    }
+    await tester.pump();
+    expect(find.text('1'), findsNothing);
+    expect(find.text('6'), findsOneWidget);
   });
 }
